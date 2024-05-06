@@ -1,0 +1,26 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+}
+
+.menu {
+  margin: 10px;
+}
+
+.menu img {
+  width: 45px;
+  margin-right: 40px;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.icons img {
+  width: 30px;
+  cursor: pointer;
+}
