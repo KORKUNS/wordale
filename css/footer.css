@@ -24,7 +24,7 @@ footer {
   font-weight: bold;
   cursor: pointer;
 }
-.pads {
+.wide {
   background-color: rgba(128, 128, 128, 0.2);
   display: flex;
   justify-content: center;
@@ -37,6 +37,6 @@ footer {
   cursor: pointer;
 }
 
-.pads img {
+.wide img {
   width: 25px;
 }

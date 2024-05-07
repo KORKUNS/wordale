@@ -75,7 +75,29 @@ function appStart() {
     }
   };
 
-  const startTimer = () => {
+  const handleClick = (event) => {
+    const keyText = event.target.dataset.key;
+    const thisBlock = document.querySelector(
+      `.board-block[data-index='${attempts}${index}']`
+    );
+    console.log(event);
+    if (keyText === "Backspace") handleBackspace();
+    else if (keyText === "Enter") {
+      if (index === 5) handleEnterKey();
+      else return;
+    } else if (index < 5) {
+      thisBlock.innerText = keyText;
+      index += 1;
+    }
+  };
+
+  const mouse = document.querySelectorAll(`.keys`);
+
+  for (let i = 0; i < mouse.length; i++) {
+    mouse[i].addEventListener("click", handleClick);
+  }
+
+  function startTimer() {
     const 시작_시간 = new Date();
 
     function setTime() {
@@ -88,7 +110,7 @@ function appStart() {
     }
 
     timer = setInterval(setTime, 1000);
-  };
+  }
 
   startTimer();
   window.addEventListener("keydown", handleKeydown);
