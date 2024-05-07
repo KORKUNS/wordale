@@ -4,13 +4,33 @@ let attempts = 0;
 let index = 0;
 let timer;
 
+let blockkeyframes = [
+  {},
+  { transform: "translateX(2px)" },
+  { transform: "translateX(-2px)" },
+  { transform: "translateX(2px)" },
+  { transform: "translateX(-2px)" },
+  {},
+];
+let blockOptions = {
+  duration: 300,
+};
+
+let massageframes = {
+  opacity: [0, 1],
+};
+let massageOptions = {
+  duration: 1000,
+};
+
 function appStart() {
   const displayGameover = () => {
     const div = document.createElement("div");
     div.innerText = "게임이 종료됐습니다.";
     div.style =
-      "display:flex; justify-content:center; align-items:center; position:absolute; top:40vh; left:45vw; background-color:white; width:200px; height:100px";
+      "display:flex; justify-content:center; align-items:center; position:absolute; top:40vh; left:45vw; background-color:green; width:200px; height:100px; border-radius:5px; font-weight:bold; color:white";
     document.body.appendChild(div);
+    div.animate(massageframes, massageOptions);
   };
 
   const nextLine = () => {
@@ -35,12 +55,20 @@ function appStart() {
       const 입력한_글자 = block.innerText;
       const 정답_글자 = 정답[i];
 
+      //if (입력한_글자 === 정답_글자) {
+      //  맞은_갯수 += 1;
+      //  block.style.background = "#6AAA64";
+      //} else if (정답.includes(입력한_글자)) block.style.background = "#C9B458";
+      //else block.style.background = "#787C7E";
+
       if (입력한_글자 === 정답_글자) {
         맞은_갯수 += 1;
         block.style.background = "#6AAA64";
-      } else if (정답.includes(입력한_글자)) block.style.background = "#C9B458";
-      else block.style.background = "#787C7E";
-
+      } else {
+        if (정답.includes(입력한_글자)) block.style.background = "#C9B458";
+        else block.style.background = "#787C7E";
+        block.animate(blockkeyframes, blockOptions);
+      }
       block.style.color = "White";
     }
 
